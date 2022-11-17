@@ -1,5 +1,6 @@
 package com.example.springbootjpa.service;
 
+import com.example.springbootjpa.domain.dto.UserRequest;
 import com.example.springbootjpa.domain.dto.UserResponse;
 import com.example.springbootjpa.domain.entity.User;
 import com.example.springbootjpa.repository.UserRepository;
@@ -24,5 +25,11 @@ public class UserService {
             User user = optUser.get();
             return new UserResponse(user.getId(), user.getUsername(), "");
         }
+    }
+
+    public UserResponse addUser(UserRequest dto) {
+        User user = dto.toEntity();
+        User savedUser = userRepository.save(user);
+        return new UserResponse(savedUser.getId(), savedUser.getUsername(), "");
     }
 }

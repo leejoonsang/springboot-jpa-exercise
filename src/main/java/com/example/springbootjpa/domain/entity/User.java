@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Builder
+@Table(name = "users2")
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
